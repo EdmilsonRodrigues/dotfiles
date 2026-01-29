@@ -3,8 +3,27 @@
 This repo is meant to store and organize all my dotfiles. If you want to use any configuration here, be welcome. If you make a change, that you think 
 improves any of these configurations, please, open a PR. (I advise that these configurations only work on GNU Linux as far as I know, maybe MacOS).
 
+Before beginning, install the GNU Stow, the tool I am using to manage my config:
+
+``` shell
+# If in a Debian based distro
+sudo apt install stow
+
+# If in a RedHat based distro
+# Maybe you need to add the Extra Packages for Enterprise Linux first.
+# sudo dnf install epel-release -y
+sudo dnf install stow
+
+# If in a SUSE based distro
+sudo zypper install stow
+
+# If in an arch based distro
+sudo pacman -Syy stow
+```
 
 Here I'll put instructions to use my configurations:
+
+
 
 ## Zshrc
 
@@ -19,14 +38,21 @@ This is the application used to manage my LSPs. It is a python application, and,
 sudo apt install pipx
 
 # If in a RedHat based distro
+# Maybe you need to add the Extra Packages for Enterprise Linux first.
+# sudo dnf install epel-release -y
 sudo dnf install pipx
 # Or
 python3 -m pip install --user pipx
 
+# If in a SUSE based distro
+sudo zypper install python3-pipx
+
 # If in an arch based distro
 sudo pacman -Syy python-pipx
+```
 
-# After installing pipx, ensure its binaries are in $PATH:
+After installing pipx, ensure its binaries are in $PATH:
+``` shell
 pipx ensurepath
 ```
 
@@ -57,8 +83,5 @@ sudo snap install --channel=latest/edge --classic
 
 Then, after installing it, call `make install-emacs`. This will setup all configuration files.
 
-Finally, open GNU Emacs for the first time. 
+Finally, open GNU Emacs for the first time: `emacs`.
 When you do it, it will be almost completely configured.
-
-
-
