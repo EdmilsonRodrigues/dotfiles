@@ -6,7 +6,7 @@ install-emacs:
 	[ -d ${EMACS_FOLDER} ] || mkdir ${EMACS_FOLDER}
 	stow --target ${EMACS_FOLDER} emacs
 
-.PHONY: install-rassaufrassum
+.PHONY: install-rassumfrassum
 install-rassumfrassum:
 	[ -d ${RASSUMFRASSUM_FOLDER} ] || mkdir ${RASSUMFRASSUM_FOLDER}
 	stow --target ${RASSUMFRASSUM_FOLDER} rassumfrassum
