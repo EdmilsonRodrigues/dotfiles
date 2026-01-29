@@ -99,5 +99,13 @@ install them all. I cherry-picked them specially for this.
 
 Check which were successfully installed at `~/.emacs.d/mason/bin`.
 
+Also, add this to your shell rc file (.bashrc, .zshrc, whatever), so the LSPs will be available in $PATH:
+
+``` shell
+export PATH="/home/familia/.emacs.d/mason/bin:$PATH"
+```
+
+export PATH="/home/familia/.emacs.d/mason/bin:$PATH"`
+
 Now, just to wrap everything up, notice that, when it's the first time opening a type of file, it will be asked to download the
 tree-sitter for that file kind. Just say yes. It will improve the performance of parsing of the file.
