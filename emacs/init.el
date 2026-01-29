@@ -19,4 +19,5 @@
 (require 'org-config)
 (require 'web-config)
 
+(provide 'init)
 ;; melpa stuff

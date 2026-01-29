@@ -5,6 +5,7 @@ RASSUMFRASSUM_FOLDER=~/.config
 install-emacs:
 	[ -d ${EMACS_FOLDER} ] || mkdir ${EMACS_FOLDER}
 	stow --target ${EMACS_FOLDER} emacs
+	cp emacs/.emacs ~
 
 .PHONY: install-rassumfrassum
 install-rassumfrassum:
