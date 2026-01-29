@@ -84,4 +84,20 @@ sudo snap install --channel=latest/edge --classic
 Then, after installing it, call `make install-emacs`. This will setup all configuration files.
 
 Finally, open GNU Emacs for the first time: `emacs`.
-When you do it, it will be almost completely configured.
+
+When you do it, it will install all dependencies and, when finish, be almost completely configured.
+
+Now, in order to finish the configuration, open the file in `~/.emacs.d/config/gui-config.el`, line 36.
+Uncomment this line, and in the end of it, run C-x C-e. It will download the icons for files navigation.
+
+Then, go to `~/.emacs.d/config/gui-config.el` and, in the final of the line 33, run C-x C-e.
+It will install all LSPs.
+
+Some LSPs might fail. Some of them will probably fail. This happens. If the LSP you want to use was not installed. Install it manually
+and let it available in the PATH. They are all already configured, just needed to be installed. If you want the best experience, 
+install them all. I cherry-picked them specially for this.
+
+Check which were successfully installed at `~/.emacs.d/mason/bin`.
+
+Now, just to wrap everything up, notice that, when it's the first time opening a type of file, it will be asked to download the
+tree-sitter for that file kind. Just say yes. It will improve the performance of parsing of the file.

@@ -1,6 +1,8 @@
 ;; -*- lexical-binding: t -*-
 
 ;; --- Table of Contents ---
+(use-package markdown-mode)
+
 (use-package toc-org
   :hook (org-mode . toc-org-mode)
   :hook (markdown-mode . toc-org-mode)
