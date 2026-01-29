@@ -1,4 +1,5 @@
 EMACS_FOLDER=~/.emacs.d
+RASSUMFRASSUM_FOLDER=~/.config
 
 .PHONY: install-emacs
 install-emacs:
@@ -7,7 +8,8 @@ install-emacs:
 
 .PHONY: install-rassaufrassum
 install-rassumfrassum:
-	stow --target ~/.config rassumfrassum
+	[ -d ${RASSUMFRASSUM_FOLDER} ] || mkdir ${RASSUMFRASSUM_FOLDER}
+	stow --target ${RASSUMFRASSUM_FOLDER} rassumfrassum
 
 .PHONY: install-zshrc
 install-zshrc:
