@@ -15,16 +15,19 @@
 (use-package bazel)
 
 (use-package editorconfig
-  :ensure t
   :config (editorconfig-mode 1))
 
 ;; Tree-sitter handles YAML, but we keep the mode for non-TS fallbacks
 (use-package yaml-mode
-  :mode "\\.ya?ml\\'")
+  :mode ("\\.ya?ml\\'" "user-data\\'"))
 
 (use-package toml-mode)
 (use-package ini-mode
   :mode "\\.ini\\'")
+
+(use-package conf-mode
+  :ensure nil
+  :mode ("\\.conf\\'" "\\.cfg\\'" "\\..*ignore\\'" "\\.env[\\..*]?\\'" "\\.lock\\'"))
 
 (use-package cfn-mode)
 

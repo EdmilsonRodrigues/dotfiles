@@ -10,7 +10,7 @@
                  "java-language-server" "protols" "ruby-lsp"
                  "docker-language-server" "angular-language-server"
                  "sqlls" "sqlfluff" "sql-formatter"
-                 "nomicfoundation-solidity-language-server"))
+                 "nomicfoundation-solidity-language-server" "perlnavigator"))
       (unless (mason-installed-p pkg)
         (ignore-errors (mason-install pkg)))))
 
@@ -45,6 +45,8 @@
          (org-mode . eglot-ensure)
          (solidity-mode . eglot-ensure)
          (solidity-ts-mode . eglot-ensure)
+         (perl-mode . eglot-ensure)
+         (perl-ts-mode . eglot-ensure)
          (python-ts-mode . (lambda () (set-fill-column 79))))
   :config
   (setq eglot-server-programs
@@ -61,6 +63,7 @@
           ((haskell-mode haskell-ts-mode)       . ("rass" "haskell"))
           ((yaml-mode yaml-ts-mode)             . ("rass" "yaml"))
           ((solidity-mode solidity-ts-mode)     . ("rass" "solidity"))
+          ((perl-mode perl-ts-mode)             . ("rass" "perl"))
           ((org-mode)                           . ("rass" "org"))))
   (setq-default
    eglot-workspace-configuration

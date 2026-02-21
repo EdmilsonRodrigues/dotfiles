@@ -112,6 +112,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/home/linuxbrew/.linuxbrew/Cellar/node/24.7.0/bin:$PATH"
 export PATH="/home/familia/go/bin:$PATH"
 
+source <(kind completion zsh)
+
 alias k=kubectl
 alias kc='kubectl create -f'
 alias kg='kubectl get'
@@ -145,3 +147,14 @@ source <(lxc completion zsh)
 [ -f "/home/familia/.ghcup/env" ] && . "/home/familia/.ghcup/env" # ghcup-env
 export PATH="/home/familia/.cabal/bin:$PATH"
 export PATH="/home/familia/.emacs.d/mason/bin:$PATH"
+export PATH="/snap/bin:$PATH"
+
+PATH="/home/familia/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/familia/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/familia/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/familia/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/familia/perl5"; export PERL_MM_OPT;
+
+export KIND_EXPERIMENTAL_PROVIDER=podman
+
+

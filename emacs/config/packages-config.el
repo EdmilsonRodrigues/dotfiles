@@ -5,9 +5,9 @@
 (setq package-enable-at-startup nil)
 
 ;; --- Setup Repositories ---
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")))
-                                 ;("elpa" . "http://elpa.gnu.org/packages/")
-                                 ;("org" . "https://orgmode.org/elpa/")))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                                 ("elpa" . "http://elpa.gnu.org/packages/")
+                                 ("org" . "https://orgmode.org/elpa/")))
 
 ;; --- Setup Package Manager --- 
 (package-initialize)  ; iniciar pacotes

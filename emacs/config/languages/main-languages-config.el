@@ -1,12 +1,24 @@
 ;; -*- lexical-binding: t -*-
 
 ;; --- Golang ---
+(defun go-setup-hook ()
+  "My standard settings for all go buffers"
+  (setq-default tab-width 4)
+  (setq-local indent-tabs-mode t)
+  (setq-local go-ts-mode-indent-offset 4)
+  (setq-local standard-indent 4)
+  
+  (add-hook 'before-save-hook #'eglot-format-buffer nil t))
+
 (use-package go-mode
   :mode "\\.go\\'"
-  :config
-  (setq go-tab-width 4)
-  ;; Eglot handles the LSP start, we handle the formatting:
-  (add-hook 'before-save-hook #'eglot-format-buffer nil t))
+  :hook (go-mode . go-setup-hook))
+
+(use-package go-ts-mode
+  :ensure nil
+  :mode "\\.go\\'"
+  :hook (go-ts-mode . go-setup-hook))
+
 
 (use-package flycheck-golangci-lint
   :hook ((go-mode go-ts-mode) . flycheck-golangci-lint-setup))
@@ -17,6 +29,18 @@
 
 (use-package flycheck-haskell
   :hook (haskell-mode . flycheck-haskell-setup))
+
+(use-package perl-mode
+  :ensure nil
+  :mode ("\\.pl\\'" "\\.pm\\'" "\\.plx\\'"))
+
+(use-package perl-ts-mode
+  :mode ("\\.pl\\'" "\\.pm\\'" "\\.plx\\'")
+  :config
+  (add-to-list 'treesit-language-source-alist
+	           '(perl . ("https://github.com/tree-sitter-perl/tree-sitter-perl" "release")))
+  (add-to-list 'treesit-language-source-alist
+	     '(pod . ("https://github.com/tree-sitter-perl/tree-sitter-pod" "release"))))
 
 ;; --- Python ---
 (use-package sphinx-doc

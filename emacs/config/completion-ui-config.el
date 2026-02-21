@@ -22,7 +22,9 @@
   (corfu-popupinfo-mode 1)
   (setq corfu-popupinfo-delay 0.5))
 
-(use-package nerd-icons-corfu)
+(use-package nerd-icons
+  :config
+  (require 'nerd-icons))
 
 (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
 

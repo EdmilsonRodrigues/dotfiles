@@ -102,6 +102,8 @@
 (load-theme 'tango-dark)
 (set-face-attribute 'default nil :height 140 :family "Ubuntu Sans Mono" )
 
+(setq ring-bell-function 'ignore)
+
 (provide 'gui-config)
 
 (defun print-formatted-all-the-icons ()
