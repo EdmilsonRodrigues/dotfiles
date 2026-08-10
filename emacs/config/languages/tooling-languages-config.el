@@ -33,6 +33,8 @@
 
 (use-package flycheck-cfn)
 
+(use-package terraform-mode)
+
 (flycheck-cfn-setup)
 
 (provide 'tooling-languages-config)

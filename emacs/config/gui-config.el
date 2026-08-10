@@ -80,8 +80,8 @@
   :ensure spaceline
   :config (spaceline-emacs-theme))
 
-(use-package emojify
-  :hook (after-init . global-emojify-mode))
+;; (use-package emojify
+;;   :hook (after-init . global-emojify-mode))
 
 ;; --- Shell --- 
 (use-package shell-pop
@@ -123,4 +123,4 @@
         (display-buffer (current-buffer))))))
 
 ;;(print-formatted-all-the-icons)  ; Run if wants to check the others to add
-;; a new icon
+                                   ;; a new icon

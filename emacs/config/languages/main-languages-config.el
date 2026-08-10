@@ -30,6 +30,8 @@
 (use-package flycheck-haskell
   :hook (haskell-mode . flycheck-haskell-setup))
 
+
+;; --- Perl ---
 (use-package perl-mode
   :ensure nil
   :mode ("\\.pl\\'" "\\.pm\\'" "\\.plx\\'"))
@@ -63,11 +65,19 @@
   :config (setq js2-basic-offset 2))
 
 (use-package typescript-mode
-  :mode "\\.ts\\'")
+  :mode "\\.tsx?\\'")
 
 ;; --- Lisp ---
+(use-package slime)
 (when (file-exists-p "~/.quicklisp/slime-helper.el")
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
-  (setq inferior-lisp-program "sbcl"))
+  (setq inferior-lisp-program "sbcl")
+  (require 'slime)
+  (slime-setup '(slime-fancy)))
+
+;; --- GraphQL ---
+(use-package graphql)
+(use-package graphql-mode)
+
 
 (provide 'main-languages-config)

@@ -44,4 +44,7 @@
          ("C-c C-<up>" . org-move-item-up)
          ("C-c C-<down>" . org-move-item-down)))
 
+(setq org-plantuml-jar-path (expand-file-name "~/bin/.java/plantuml-gplv2-1.2026.3.jar"))
+(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+
 (provide 'org-config)

@@ -1,7 +1,10 @@
 ;; -*- lexical-binding: t -*-
 
 (use-package web-mode
-  :mode ("\\.phtml\\'" "\\.html?\\'" "\\.js[x]\\'" "\\.ts[x]\\'")
+  :mode ("\\.phtml\\'"
+         "\\.html?\\'"
+         "\\.js[x]\\'")
+         ;"\\.ts[x]\\'")
   :config
   (setq web-mode-markup-indent-offset 2
         web-mode-code-indent-offset 2

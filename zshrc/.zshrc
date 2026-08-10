@@ -156,5 +156,16 @@ PERL_MB_OPT="--install_base \"/home/familia/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/familia/perl5"; export PERL_MM_OPT;
 
 export KIND_EXPERIMENTAL_PROVIDER=podman
+export PATH=$PATH:/home/familia/Android/android-studio/bin
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+alias emacs=/snap/bin/emacs
 
-
+# pnpm
+export PNPM_HOME="/home/familia/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -9,8 +9,9 @@
                  "clangd" "intelephense" "typescript-language-server"
                  "java-language-server" "protols" "ruby-lsp"
                  "docker-language-server" "angular-language-server"
-                 "sqlls" "sqlfluff" "sql-formatter"
-                 "nomicfoundation-solidity-language-server" "perlnavigator"))
+                 "sqlls" "sqlfluff" "sql-formatter" "terraform-ls"
+                 "nomicfoundation-solidity-language-server" "perlnavigator"
+                 "graphql-language-service-cli"))
       (unless (mason-installed-p pkg)
         (ignore-errors (mason-install pkg)))))
 
@@ -26,6 +27,9 @@
          (ruby-ts-mode . eglot-ensure)
          (crystal-mode . eglot-ensure)
          (crystal-ts-mode . eglot-ensure)
+         (js-mode . eglot-ensure)
+         (js-jsx-mode . eglot-ensure)
+         (js-ts-mode . eglot-ensure)
          (bash-mode . eglot-ensure)
          (bash-ts-mode . eglot-ensure)
          (php-mode . eglot-ensure)
@@ -47,6 +51,13 @@
          (solidity-ts-mode . eglot-ensure)
          (perl-mode . eglot-ensure)
          (perl-ts-mode . eglot-ensure)
+         (ts-mode . eglot-ensure)
+         (tsx-ts-mode . eglot-ensure)
+         (terraform-mode . eglot-ensure)
+         (typescript-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure)
+         (terraform-ts-mode . eglot-ensure)
+         (graphql-mode . eglot-ensure)
          (python-ts-mode . (lambda () (set-fill-column 79))))
   :config
   (setq eglot-server-programs
@@ -57,19 +68,21 @@
           ((bash-mode bash-ts-mode)             . ("rass" "bash"))
           ((php-mode php-ts-mode)               . ("rass" "php"))
           ((rust-mode rust-ts-mode)             . ("rass" "rust"))
-          ((typescript-mode typescript-ts-mode) . ("rass" "typescript"))
+          ((typescript-mode typescript-ts-mode ts-mode tsx-ts-mode) . ("rass" "typescript"))
           ((c-mode c-ts-mode)                   . ("rass" "c"))
           ((c++-mode c++-ts-mode)               . ("rass" "c"))
           ((haskell-mode haskell-ts-mode)       . ("rass" "haskell"))
           ((yaml-mode yaml-ts-mode)             . ("rass" "yaml"))
           ((solidity-mode solidity-ts-mode)     . ("rass" "solidity"))
           ((perl-mode perl-ts-mode)             . ("rass" "perl"))
+          ((terraform-mode terraform-ts-mode)   . ("rass" "terraform"))
+          ((graphql-mode)                       . ("rass" "graphql"))
           ((org-mode)                           . ("rass" "org"))))
   (setq-default
    eglot-workspace-configuration
    '(
      :ltex
-     (:language "pt-BR" ;["pt-BR" "en-US"]
+     (:language ["pt-BR" "en-US"]
       :additionalRules (:enablePickyRules t
 			:motherTongue "pt-BR")
       :disabledRules (:pt-BR ["PT_SMART_QUOTES" "ELLIPSIS"])
