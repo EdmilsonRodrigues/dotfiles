@@ -100,7 +100,7 @@
 
 ;; --- Theme && Fonts ---
 (load-theme 'tango-dark)
-(set-face-attribute 'default nil :height 140 :family "Ubuntu Sans Mono" )
+(set-face-attribute 'default nil :height 135 :family "Maple Mono" )
 
 (setq ring-bell-function 'ignore)
 

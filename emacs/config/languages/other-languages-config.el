@@ -27,4 +27,7 @@
 (use-package solidity-mode)
 (use-package crystal-mode)
 
+;; --- Lua ---
+(use-package lua-mode)
+
 (provide 'other-languages-config)

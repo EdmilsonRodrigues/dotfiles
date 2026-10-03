@@ -37,4 +37,14 @@
 
 (flycheck-cfn-setup)
 
+(use-package jsonnet-mode
+  :mode "\\.jsonnet\\'"
+  :config
+  ;; Automatically format buffer on save using jsonnetfmt (optional)
+  (add-hook 'jsonnet-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook #'jsonnet-reformat-buffer nil t))))
+
+(use-package logview)
+
 (provide 'tooling-languages-config)

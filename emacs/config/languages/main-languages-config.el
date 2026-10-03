@@ -79,5 +79,32 @@
 (use-package graphql)
 (use-package graphql-mode)
 
+;; -- Kubernetes --
+(use-package go-template-mode
+  :mode (("\\.gotmpl\\'" . go-template-mode)
+         ("\\.tpl\\'" . go-template-mode)
+         ("\\.tmpl\\'" . go-template-mode)))
+
+(defun my/go-template-helper-enable ()
+  "Enable go-template-helper-mode when appropriate.
+  Activates `go-template-helper-mode' if the buffer's file is located in a
+  templates/ directory and has a .yaml, .yml, or .tpl extension."
+  (when (and buffer-file-name
+             (string-match-p
+              "/templates/.*\\(?:\\.ya?ml\\|\\.tpl\\)\\'"
+              buffer-file-name))
+    (require 'go-template-helper-mode)
+    (go-template-helper-mode 1)))
+
+(use-package go-template-helper-mode
+  :load-path "~/.emacs.d/lisp/go-template-helper-mode"
+  :hook (yaml-mode . my/go-template-helper-enable))
+
+(use-package go-template-helper-mode
+  :load-path "~/.emacs.d/lisp/go-template-helper-mode"
+  :hook ((yaml-mode . my/go-template-helper-enable)
+         (yaml-ts-mode . my/go-template-helper-enable)))
+
+(use-package yaml-pro)
 
 (provide 'main-languages-config)

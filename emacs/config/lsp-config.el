@@ -3,7 +3,7 @@
 (use-package mason
   :config
   (mason-setup)
-  (dolist (pkg '("zuban" "ruff" "marksman" "ltex-ls" "typos-lsp"
+  (dolist (pkg '("zuban" "marksman" "ltex-ls" "typos-lsp"
                  "shellcheck" "gopls" "qmlls" "rust-analyzer"
                  "yaml-language-server" "haskell-language-server"
                  "clangd" "intelephense" "typescript-language-server"

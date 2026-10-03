@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
 (use-package corfu
-  :ensure t
   :hook (prog-mode . corfu-mode)
   :init
   (global-corfu-mode)
@@ -23,29 +22,24 @@
   (setq corfu-popupinfo-delay 0.5))
 
 (use-package nerd-icons
+  :init
+  (when (member "Symbols Nerd Font Mono" (font-family-list))
+    (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono") nil 'append))
   :config
   (require 'nerd-icons))
 
-(add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
-
 (use-package nerd-icons-corfu
-  :ensure t
   :after corfu
-  :config
+  :init
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
-  ;; Your custom mapping logic
+  :config
   (setq nerd-icons-corfu-mapping
         '((array :style "cod" :icon "symbol_array" :face font-lock-type-face)
           (boolean :style "cod" :icon "symbol_boolean" :face font-lock-builtin-face)
           (file :fn nerd-icons-icon-for-file :face font-lock-string-face)
           (t :style "cod" :icon "code" :face font-lock-warning-face))))
-;; The Custom interface is also supported for tuning the variable above.
 
 (use-package eldoc-box
-  ;; :config
-  ;; ;; Customizing the look
-  ;; (setq eldoc-box-max-pixel-width 600
-  ;;       eldoc-box-max-pixel-height 400)
   :hook (eglot-managed-mode . eldoc-box-hover-mode))
 
 (provide 'completion-ui-config)

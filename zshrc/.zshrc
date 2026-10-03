@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH="/home/linuxbrew/.linuxbrew/Cellar/node/24.7.0/bin:$PATH"
-export PATH="/home/familia/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 source <(kind completion zsh)
 
@@ -133,9 +133,9 @@ alias klocal='kubectx kind-kind'
 . <(kubectl completion zsh)
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
-export PATH="/home/familia/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Export ASDF variables
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
@@ -144,28 +144,55 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 source <(lxc completion zsh)
 
 
-[ -f "/home/familia/.ghcup/env" ] && . "/home/familia/.ghcup/env" # ghcup-env
-export PATH="/home/familia/.cabal/bin:$PATH"
-export PATH="/home/familia/.emacs.d/mason/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/.emacs.d/mason/bin:$PATH"
 export PATH="/snap/bin:$PATH"
 
-PATH="/home/familia/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/familia/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/familia/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/familia/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/familia/perl5"; export PERL_MM_OPT;
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 export KIND_EXPERIMENTAL_PROVIDER=podman
-export PATH=$PATH:/home/familia/Android/android-studio/bin
+export PATH=$PATH:$HOME/Android/android-studio/bin
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-alias emacs=/snap/bin/emacs
 
 # pnpm
-export PNPM_HOME="/home/familia/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Created by `pipx` on 2026-08-12 12:19:14
+export PATH="$PATH:/home/familia/.local/bin"
+
+source $HOME/.env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/familia/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/familia/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/familia/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/familia/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+source <(helm completion zsh)
+source <(kubecfg completion --shell zsh)
+
+
+[ -f "/home/familia/.ghcup/env" ] && . "/home/familia/.ghcup/env" # ghcup-env
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export GOPRIVATE="gitlab.com/voltbras/*"
+
+# Podman & Testcontainers compatibility
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+export TESTCONTAINERS_RYUK_DISABLED=true
+
+export SWAYSOCK=$(ls /run/user/$(id -u)/sway-ipc.*.sock | head -n 1)
+
+source <(k3d completion zsh)
