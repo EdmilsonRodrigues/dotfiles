@@ -112,6 +112,14 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/home/linuxbrew/.linuxbrew/Cellar/node/24.7.0/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
+if [[ -f "$HOME/.tool-versions" ]]; then
+  local go_version
+  go_version=$(awk '/golang/ {print $2}' "$HOME/.tool-versions")
+  if [[ -n "$go_version" ]]; then
+    export PATH="$HOME/.asdf/installs/golang/$go_version/bin:$PATH"
+  fi
+fi
+
 source <(kind completion zsh)
 
 alias k=kubectl

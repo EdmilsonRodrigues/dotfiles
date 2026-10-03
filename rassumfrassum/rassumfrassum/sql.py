@@ -1,7 +1,5 @@
 def servers():
     return [
-        # ['sql-formatter'],
-        # ['sqlfluff'],
-        ['sql-language-server', 'up'],
+        ['sqls'],
         ['typos-lsp']
     ]
