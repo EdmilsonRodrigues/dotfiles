@@ -74,7 +74,7 @@ Look how the others are to get inspiration.
 If you want to use my GNU Emacs Config, you will need to do the rassumfrassum first.
 After configuring rassumfrassumm, install GNU Emacs.
 
-My configuration is meant for GNU Emacs 31 or later.
+My configuration is meant for GNU Emacs 32 or later.
 The snap package from the edge channel is in this version, I recommend installing from there:
 
 ``` shell
