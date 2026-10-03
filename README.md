@@ -1,6 +1,6 @@
 # My Dotfiles
 
-This repo is meant to store and organize all my dotfiles. If you want to use any configuration here, be welcome. If you make a change, that you think 
+This repo is meant to store and organize all my dotfiles. If you want to use any configuration here, be welcome. If you make a change, that you think
 improves any of these configurations, please, open a PR. (I advise that these configurations only work on GNU Linux as far as I know, maybe MacOS).
 
 Before beginning, install the GNU Stow, the tool I am using to manage my config:
@@ -66,7 +66,7 @@ Now, finally, call `make install-rassumfrassum` to configure it.
 
 Now, to use it, just run `rass ${language}`.
 
-If you want to add any language, or change the configuration, just change it in this repo, running in a ${language}.py file. 
+If you want to add any language, or change the configuration, just change it in this repo, running in a ${language}.py file.
 Look how the others are to get inspiration.
 
 ## GNU Emacs
@@ -74,7 +74,7 @@ Look how the others are to get inspiration.
 If you want to use my GNU Emacs Config, you will need to do the rassumfrassum first.
 After configuring rassumfrassumm, install GNU Emacs.
 
-My configuration is meant for GNU Emacs 31 or later. 
+My configuration is meant for GNU Emacs 31 or later.
 The snap package from the edge channel is in this version, I recommend installing from there:
 
 ``` shell
@@ -94,7 +94,7 @@ Then, go to `~/.emacs.d/config/gui-config.el` and, in the final of the line 33, 
 It will install all LSPs.
 
 Some LSPs might fail. Some of them will probably fail. This happens. If the LSP you want to use was not installed. Install it manually
-and let it available in the PATH. They are all already configured, just needed to be installed. If you want the best experience, 
+and let it available in the PATH. They are all already configured, just needed to be installed. If you want the best experience,
 install them all. I cherry-picked them specially for this.
 
 Check which were successfully installed at `~/.emacs.d/mason/bin`.

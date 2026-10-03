@@ -79,7 +79,7 @@
 ;; Text Folding
 (use-package origami
   ;:config
-  ;; Optional: If you want certain types of files to be folded by default 
+  ;; Optional: If you want certain types of files to be folded by default
   ;; when they open, you can use:
   ;; (add-hook 'origami-mode-hook #'origami-close-all-nodes)
   :hook (prog-mode . origami-mode)

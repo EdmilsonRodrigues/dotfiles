@@ -9,7 +9,7 @@
                                  ("elpa" . "http://elpa.gnu.org/packages/")
                                  ("org" . "https://orgmode.org/elpa/")))
 
-;; --- Setup Package Manager --- 
+;; --- Setup Package Manager ---
 (package-initialize)  ; iniciar pacotes
 
 (unless (package-installed-p 'use-package)

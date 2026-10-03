@@ -30,7 +30,7 @@
          ("C-c k"   . consult-ripgrep)       ;; Replaces counsel-ag/grep
          ("C-x l"   . consult-locate)        ;; Replaces counsel-locate
          ;; Help replacements
-         ("<f1> f"  . describe-function)     ;; Vertico + Marginalia makes these 
+         ("<f1> f"  . describe-function)     ;; Vertico + Marginalia makes these
          ("<f1> v"  . describe-variable)     ;; better than Counsel
          ("<f1> l"  . find-library)))
 

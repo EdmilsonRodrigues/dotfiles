@@ -83,7 +83,7 @@
 ;; (use-package emojify
 ;;   :hook (after-init . global-emojify-mode))
 
-;; --- Shell --- 
+;; --- Shell ---
 (use-package shell-pop
   :bind (("C-'" . shell-pop))
   :config

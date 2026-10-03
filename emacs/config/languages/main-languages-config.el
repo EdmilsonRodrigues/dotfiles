@@ -7,7 +7,7 @@
   (setq-local indent-tabs-mode t)
   (setq-local go-ts-mode-indent-offset 4)
   (setq-local standard-indent 4)
-  
+
   (add-hook 'before-save-hook #'eglot-format-buffer nil t))
 
 (use-package go-mode
@@ -58,7 +58,7 @@
   :hook (sql-mode . sqlformat-on-save-mode))
 
 ;; --- JavaScript & TypeScript ---
-;; Emacs 31 has excellent built-in ts-modes. 
+;; Emacs 31 has excellent built-in ts-modes.
 ;; js2-mode is still great for extra syntax checks.
 (use-package js2-mode
   :mode "\\.jsx?\\'"

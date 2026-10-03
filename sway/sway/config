@@ -87,7 +87,7 @@ input "1739:52781:MSFT0001:00_06CB:CE2D_Touchpad" {
 input "12538:770:Instant_USB_Optical_Mouse" {
     natural_scroll disabled
 }
-    
+
 #
 # Example configuration:
 #

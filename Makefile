@@ -50,4 +50,3 @@ install-eww: ensure-config
 .PHONY: ensure-config
 ensure-config:
 	[ -d ${CONFIG_FOLDER} ] || mkdir ${CONFIG_FOLDER}
-
