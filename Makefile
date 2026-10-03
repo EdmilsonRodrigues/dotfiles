@@ -12,6 +12,10 @@ install-emacs:
 install-zsh:
 	stow --target ~ zsh
 
+.PHONY: install-starship
+install-starship:
+	stow --target ~ starship
+
 .PHONY: install-rassumfrassum
 install-rassumfrassum: ensure-config
 	stow --target ${CONFIG_FOLDER} rassumfrassum

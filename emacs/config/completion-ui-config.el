@@ -17,16 +17,23 @@
               ("S-TAB" . corfu-previous)
               ([backtab] . corfu-previous))
   :config
-  ;; Emacs 31 Bonus: Show documentation in a side-popup
   (corfu-popupinfo-mode 1)
-  (setq corfu-popupinfo-delay 0.5))
+  (setq corfu-popupinfo-delay 0.5)
+
+  (let ((bg-surface    "#232a2e")
+        (bg-hover      "#3a454a")
+        (fg-text       "#d3c6aa")
+        (border-muted  "#2d3834")
+        (accent-green  "#a7c080"))
+    (custom-set-faces
+     `(corfu-default ((t (:background ,bg-surface :foreground ,fg-text))))
+     `(corfu-current ((t (:background ,bg-hover :foreground ,accent-green :weight bold))))
+     `(corfu-border ((t (:background ,border-muted)))))))
 
 (use-package nerd-icons
   :init
   (when (member "Symbols Nerd Font Mono" (font-family-list))
-    (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono") nil 'append))
-  :config
-  (require 'nerd-icons))
+    (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono") nil 'append)))
 
 (use-package nerd-icons-corfu
   :after corfu
@@ -40,6 +47,9 @@
           (t :style "cod" :icon "code" :face font-lock-warning-face))))
 
 (use-package eldoc-box
-  :hook (eglot-managed-mode . eldoc-box-hover-mode))
+  :hook (eglot-managed-mode . eldoc-box-hover-mode)
+  :config
+  (set-face-attribute 'eldoc-box-border nil :background "#2d3834")
+  (set-face-attribute 'eldoc-box-body nil :background "#232a2e" :foreground "#d3c6aa"))
 
 (provide 'completion-ui-config)

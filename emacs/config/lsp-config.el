@@ -16,50 +16,18 @@
         (ignore-errors (mason-install pkg)))))
 
 (use-package eglot
+  :ensure nil
   :defer t
-  :hook ((python-mode . eglot-ensure)
-         (python-ts-mode . eglot-ensure)
-         (go-mode . eglot-ensure)
-         (go-ts-mode . eglot-ensure)
-         (rust-mode . eglot-ensure)
-         (rust-ts-mode . eglot-ensure)
-         (ruby-mode . eglot-ensure)
-         (ruby-ts-mode . eglot-ensure)
-         (crystal-mode . eglot-ensure)
-         (crystal-ts-mode . eglot-ensure)
-         (js-mode . eglot-ensure)
-         (js-jsx-mode . eglot-ensure)
-         (js-ts-mode . eglot-ensure)
-         (sh-mode . englote-ensure)
-         (sh-ts-mode . englote-ensure)
-         (bash-mode . eglot-ensure)
-         (bash-ts-mode . eglot-ensure)
-         (php-mode . eglot-ensure)
-         (php-ts-mode . eglot-ensure)
-         (typescript-mode . eglot-ensure)
-         (typescript-ts-mode . eglot-ensure)
-         (c-mode . eglot-ensure)
-         (c-ts-mode . eglot-ensure)
-         (c++-mode . eglot-ensure)
-         (c++-ts-mode . eglot-ensure)
-         (haskell-mode . eglot-ensure)
-         (haskell-ts-mode . eglot-ensure)
-         (yaml-mode . eglot-ensure)
-         (yaml-ts-mode . eglot-ensure)
-         (sql-mode . eglot-ensure)
-         (markdown-mode . eglot-ensure)
-         (org-mode . eglot-ensure)
-         (solidity-mode . eglot-ensure)
-         (solidity-ts-mode . eglot-ensure)
-         (perl-mode . eglot-ensure)
-         (perl-ts-mode . eglot-ensure)
-         (ts-mode . eglot-ensure)
-         (tsx-ts-mode . eglot-ensure)
-         (terraform-mode . eglot-ensure)
-         (typescript-mode . eglot-ensure)
-         (typescript-ts-mode . eglot-ensure)
-         (terraform-ts-mode . eglot-ensure)
-         (graphql-mode . eglot-ensure)
+  :hook (((python-mode python-ts-mode go-mode go-ts-mode
+           rust-mode rust-ts-mode ruby-mode ruby-ts-mode
+           crystal-mode crystal-ts-mode js-mode js-jsx-mode js-ts-mode
+           sh-mode sh-ts-mode bash-mode bash-ts-mode php-mode php-ts-mode
+           typescript-mode typescript-ts-mode c-mode c-ts-mode
+           c++-mode c++-ts-mode haskell-mode haskell-ts-mode
+           yaml-mode yaml-ts-mode sql-mode markdown-mode org-mode
+           solidity-mode solidity-ts-mode perl-mode perl-ts-mode
+           ts-mode tsx-ts-mode terraform-mode terraform-ts-mode
+           graphql-mode) . eglot-ensure)
          (python-ts-mode . (lambda () (set-fill-column 79))))
   :config
   (setq eglot-server-programs
@@ -82,11 +50,10 @@
           ((org-mode)                           . ("rass" "org"))))
   (setq-default
    eglot-workspace-configuration
-   '(
-     :ltex
+   '(:ltex
      (:language ["pt-BR" "en-US"]
       :additionalRules (:enablePickyRules t
-			:motherTongue "pt-BR")
+            :motherTongue "pt-BR")
       :disabledRules (:pt-BR ["PT_SMART_QUOTES" "ELLIPSIS"])
       :completionEnabled t))))
 

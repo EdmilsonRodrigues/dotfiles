@@ -1,0 +1,37 @@
+# ~/.config/starship.toml - Everforest Minimal
+
+format = """
+$kubernetes\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$character"""
+
+# Directory: Show ONLY current folder name
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+style = "bold #83c092" # Bioluminescent Cyan
+format = "[$path]($style) "
+
+# Git Branch module
+[git_branch]
+style = "bold #dbbc7f" # Warm Amber
+format = "[git:\\(](#7fbbb3)[$branch]($style)[\\)](#7fbbb3)"
+
+# Git Status module
+[git_status]
+style = "bold #e67e80" # Crimson Spore
+format = " [$all_status$ahead_behind]($style) "
+
+# Kubernetes Context module
+[kubernetes]
+disabled = false
+style = "bold #d699b6" # Dusky Orchid
+format = "[k8s:\\(](#7fbbb3)[$context]($style)[\\)](#7fbbb3) "
+
+# Prompt Character & Exit Code module
+[character]
+success_symbol = "[➜](bold #a7c080) " # Moss Emerald
+error_symbol = "[➜ $status](bold #e67e80) " # Crimson Spore + Exit Code

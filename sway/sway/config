@@ -22,12 +22,6 @@ set $menu pgrep wofi > /dev/null 2>&1 && killall wofi || wofi --show drun --loca
 output * bg ~/.local/share/wallpapers/forest2.jpg fill
 output eDP-1 resolution 1920x1080@60.056Hz position 0,0
 
-### Gaps & Borders
-gaps inner 8px
-gaps outer 8px
-default_border pixel 1px
-default_floating_border pixel 1px
-
 ### Input configuration
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout "pt"
@@ -53,8 +47,15 @@ bar {
     swaybar_command waybar
 }
 
+# Eww
+exec_always ~/.config/eww/scripts/start.sh
+
 # System Includes & Environment Setup
 include @sysconfdir@/sway/config.d/*
 include ~/.config/sway/config.d/*
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY
 bindsym $mod+Shift+e exec swaynag -t warning -m "Are you sure you want to exit sway?" -B "Yes, EXIT!" "swaymsg exit" --font="Maple Mono Bold 12"
+bindsym $mod+Shift+b exec killall -SIGUSR1 waybar
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+bindsym $mod+c exec cliphist list | wofi --show dmenu -p "Clipboard" --location top -y 15 | cliphist decode | wl-copy

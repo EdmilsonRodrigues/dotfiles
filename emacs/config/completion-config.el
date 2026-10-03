@@ -2,12 +2,16 @@
 ;; Vertico
 (use-package vertico
   :custom
-  ;; (vertico-scroll-margin 0) ;; Different scroll margin
-  (vertico-count 20) ;; Show more candidates
-  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
-  (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  (vertico-count 20)
+  (vertico-cycle t)
   :init
-  (vertico-mode))
+  (vertico-mode)
+  :config
+  ;; Everforest UI Injection for Vertico
+  (let ((bg-hover      "#3a454a")
+        (accent-green  "#a7c080"))
+    (custom-set-faces
+     `(vertico-current ((t (:background ,bg-hover :foreground ,accent-green :weight bold)))))))
 
 (use-package savehist
   :init (savehist-mode))
@@ -23,15 +27,11 @@
 
 (use-package orderless
   :custom
-  ;; Configure a custom style dispatcher (see the Consult wiki)
-  ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
-  ;; (orderless-component-separator #'orderless-escapable-split-on-space)
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
-  (completion-category-defaults nil) ;; Disable defaults, use our settings
-  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
+  (completion-category-defaults nil)
+  (completion-pcm-leading-wildcard t))
 
-;; Consult
 (use-package consult
   :bind (("C-o" . consult-file)
          ("C-x d" . consult-dir)
@@ -49,16 +49,9 @@
 (use-package emacs
   :bind ("C-º" . execute-extended-command)
   :custom
-  ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
-  ;; to switch display modes.
   (context-menu-mode t)
-  ;; Support opening new minibuffers from inside existing minibuffers.
   (enable-recursive-minibuffers t)
-  ;; Hide commands in M-x which do not work in the current mode.  Vertico
-  ;; commands are hidden in normal buffers. This setting is useful beyond
-  ;; Vertico.
   (read-extended-command-predicate #'command-completion-default-include-p)
-  ;; Do not allow the cursor in the minibuffer prompt
   (minibuffer-prompt-properties
    '(read-only t cursor-intangible t face minibuffer-prompt)))
 
@@ -76,21 +69,13 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-;; Text Folding
 (use-package origami
-  ;:config
-  ;; Optional: If you want certain types of files to be folded by default
-  ;; when they open, you can use:
-  ;; (add-hook 'origami-mode-hook #'origami-close-all-nodes)
   :hook (prog-mode . origami-mode)
   :bind (:map origami-mode-map
               ("<backtab>" . origami-toggle-node)
               ("C-<iso-lefttab>" . origami-toggle-all-nodes)))
 
-                                        ;
-;; snippets from autocomplete
 (use-package yasnippet
   :init (yas-global-mode 1))
-
 
 (provide 'completion-config)
