@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="everforest"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +70,18 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf)
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+plugins=(
+    git
+    asdf
+    kubectl
+    helm
+    podman
+    golang
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,22 +132,6 @@ if [[ -f "$HOME/.tool-versions" ]]; then
 fi
 
 source <(kind completion zsh)
-
-alias k=kubectl
-alias kc='kubectl create -f'
-alias kg='kubectl get'
-alias kl='kubectl logs'
-alias klf='kubectl logs -f'
-alias kx='kubectl exec -i -t'
-alias kd='kubectl describe'
-alias krm='kubectl delete'
-alias ka='kubectl apply -fi'
-alias kp='kubectl get po'
-alias kpf='kubectl port-forward'
-alias ksvc='kubectl get svc'
-
-alias kdev='kubectx kube-user@sipub'
-alias klocal='kubectx kind-kind'
 
 . <(kubectl completion zsh)
 

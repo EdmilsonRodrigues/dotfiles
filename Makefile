@@ -1,5 +1,6 @@
 EMACS_FOLDER=~/.emacs.d
 CONFIG_FOLDER=~/.config
+LOCAL_FOLDER=~/.local/share
 
 .PHONY: install-emacs
 install-emacs:
@@ -7,9 +8,9 @@ install-emacs:
 	stow --target ${EMACS_FOLDER} emacs
 	cp emacs/.emacs ~
 
-.PHONY: install-zshrc
-install-zshrc:
-	stow --target ~ zshrc
+.PHONY: install-zsh
+install-zsh:
+	stow --target ~ zsh
 
 .PHONY: install-rassumfrassum
 install-rassumfrassum: ensure-config
@@ -47,6 +48,14 @@ install-wofi: ensure-config
 install-eww: ensure-config
 	stow --target ${CONFIG_FOLDER} eww
 
+.PHONY: install-wallpaper
+install-wallpaer: ensure-local
+	stow --target ${LOCAL_FOLDER} wallpapers
+
 .PHONY: ensure-config
 ensure-config:
 	[ -d ${CONFIG_FOLDER} ] || mkdir ${CONFIG_FOLDER}
+
+.PHONY: ensure-local
+ensure-local:
+	[ -d ${LOCAL_FOLDER} ] || mkdir ${LOCAL_FOLDER}
