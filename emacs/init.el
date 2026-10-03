@@ -40,6 +40,7 @@
 (require 'lsp-config)
 (require 'org-config)
 (require 'web-config)
+(require 'llm-config)
 
 (provide 'init)
 ;; melpa stuff

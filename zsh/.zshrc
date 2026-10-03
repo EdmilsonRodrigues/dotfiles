@@ -12,6 +12,10 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 
 # Make sure Starship init is commented out:
+. "$HOME/.local/bin/env"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 eval "$(starship init zsh)"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -118,10 +122,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Restart your shell for the changes to take effect.
-
-. "$HOME/.local/bin/env"
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH="/home/linuxbrew/.linuxbrew/Cellar/node/24.7.0/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
