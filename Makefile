@@ -1,6 +1,7 @@
 EMACS_FOLDER=~/.emacs.d
 CONFIG_FOLDER=~/.config
 LOCAL_FOLDER=~/.local/share
+ROOT_FOLDER=/
 
 .PHONY: install-emacs
 install-emacs:
@@ -11,6 +12,9 @@ install-emacs:
 .PHONY: install-zsh
 install-zsh:
 	stow --target ~ zsh
+
+.PHONY: install-zshrc
+install-zshrc: install-zsh
 
 .PHONY: install-starship
 install-starship:
@@ -52,8 +56,12 @@ install-wofi: ensure-config
 install-eww: ensure-config
 	stow --target ${CONFIG_FOLDER} eww
 
+.PHONY: install-lightdm
+install-lightdm:
+	stow --target ${ROOT_FOLDER} lightdm
+
 .PHONY: install-wallpaper
-install-wallpaer: ensure-local
+install-wallpaper: ensure-local
 	stow --target ${LOCAL_FOLDER} wallpapers
 
 .PHONY: ensure-config

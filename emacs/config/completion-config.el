@@ -17,7 +17,7 @@
   :init (savehist-mode))
 
 (use-package vertico-directory
-  :ensure nil
+  :straight nil
   :after vertico
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)

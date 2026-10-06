@@ -16,7 +16,7 @@
         (ignore-errors (mason-install pkg)))))
 
 (use-package eglot
-  :ensure nil
+  :straight nil
   :defer t
   :hook (((python-mode python-ts-mode go-mode go-ts-mode
            rust-mode rust-ts-mode ruby-mode ruby-ts-mode

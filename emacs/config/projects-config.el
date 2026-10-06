@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
 (use-package project
-  :ensure nil
+  :straight nil
   :bind (("C-c p p" . project-switch-project)
          ("C-c p f" . project-find-file)
          ("C-c p g" . project-find-regexp)
@@ -41,7 +41,7 @@
 
 ;; --- Recent Files ---
 (use-package recentf
-  :ensure nil ;; Built-in
+  :straight nil ;; Built-in
   :config
   (add-to-list 'recentf-exclude "~/.elfeed/*")
   (add-to-list 'recentf-exclude "~/.emacs.d/*")

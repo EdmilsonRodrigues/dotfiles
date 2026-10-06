@@ -29,6 +29,16 @@ Here I'll put instructions to use my configurations:
 
 This is the easier one, just call `make install-zshrc`, and it will go to your zshrc.
 
+## LightDM
+
+If you use `lightdm-gtk-greeter`, this repo now includes an Everforest dark profile.
+
+Install it with:
+
+``` shell
+sudo make install-lightdm
+```
+
 ## Rassumfrassum
 
 This is the application used to manage my LSPs. It is a python application, and, so, the first step, is to install pipx:

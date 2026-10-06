@@ -15,7 +15,6 @@
 ;; --- Projects ---
 (use-package org-project-capture
   :bind (("C-c n p" . org-project-capture-project-todo-completing-read))
-  :ensure t
   :config
   (progn
     (setq org-project-capture-backend

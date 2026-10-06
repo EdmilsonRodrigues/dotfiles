@@ -15,7 +15,7 @@
   :hook (go-mode . go-setup-hook))
 
 (use-package go-ts-mode
-  :ensure nil
+  :straight nil
   :mode "\\.go\\'"
   :hook (go-ts-mode . go-setup-hook))
 
@@ -33,7 +33,7 @@
 
 ;; --- Perl ---
 (use-package perl-mode
-  :ensure nil
+  :straight nil
   :mode ("\\.pl\\'" "\\.pm\\'" "\\.plx\\'"))
 
 (use-package perl-ts-mode

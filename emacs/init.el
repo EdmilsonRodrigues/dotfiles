@@ -1,5 +1,4 @@
-;;;; package --- Edmilson Rodrigues GNU Emacs Config
-;; -*- lexical-binding: t -*-
+;;;; init.el --- Edmilson Rodrigues GNU Emacs Config  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -40,9 +39,7 @@
 (require 'lsp-config)
 (require 'org-config)
 (require 'web-config)
-(require 'llm-config)
 
-(provide 'init)
 ;; melpa stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

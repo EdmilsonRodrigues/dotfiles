@@ -12,7 +12,10 @@
 (package-initialize)
 
 (require 'use-package)
-(setq use-package-always-ensure t)
+;; straight.el installs packages (see `straight-use-package-by-default' in
+;; init.el); package.el must not also try to, or startup aborts on features
+;; that are not standalone packages (e.g. vertico-directory).
+(setq use-package-always-ensure nil)
 
 (use-package try)
 

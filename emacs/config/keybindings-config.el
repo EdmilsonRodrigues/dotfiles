@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
 (use-package ergoemacs-mode
-  :ensure t
   :init
   (setq ergoemacs-theme nil)
   (setq ergoemacs-keyboard-layout "pt")

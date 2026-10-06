@@ -77,16 +77,15 @@
         neo-show-hidden-files t))
 
 ;; --- Modeline ---
-(use-package spaceline-config
-  :ensure spaceline
+(use-package spaceline
+  :demand t
   :config
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+  (require 'spaceline-config)
   (spaceline-emacs-theme))
 
 ;; --- Shell ---
 ;; --- Emacs Advanced Terminal (Eat) ---
 (use-package eat
-  :ensure t
   :hook (eshell-load . eat-eshell-mode)
   :custom
   (eat-kill-buffer-on-exit t)
@@ -122,7 +121,7 @@
 
 ;; --- Eshell Configuration & Popup ---
 (use-package eshell
-  :ensure nil ;; Built into Emacs
+  :straight nil ;; Built into Emacs
   :bind (("C-'" . my-toggle-eshell))
   :config
   ;; 1. Force Eshell to render at the bottom, exactly like shell-pop
