@@ -9,7 +9,9 @@
   "margin-left": 500,
   "modules-left": [
     "hyprland/workspaces",
-    "sway/workspaces"
+    "sway/workspaces",
+    "custom/slack",
+    "custom/thunderbird"
   ],
   "modules-center": [
     "custom/applauncher"
@@ -31,6 +33,22 @@
     "disable-scroll": true,
     "all-outputs": false,
     "tooltip": false
+  },
+  "custom/slack": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 5,
+    "exec": "${HOME}/.config/waybar/scripts/slack-status.sh '' ",
+    "on-click": "swaymsg '[app_id=\"com.slack.Slack\"] focus' || flatpak run com.slack.Slack",
+    "tooltip": true
+  },
+  "custom/thunderbird": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 5,
+    "exec": "${HOME}/.config/waybar/scripts/thunderbird-status.sh ''",
+    "on-click": "swaymsg '[app_id=\"thunderbird_thunderbird\"] focus' || thunderbird",
+    "tooltip": true
   },
   "custom/applauncher": {
     "format": "〇",

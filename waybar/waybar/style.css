@@ -17,6 +17,8 @@ window#waybar {
 #network,
 #clock,
 #custom-applauncher,
+#custom-slack,
+#custom-thunderbird,
 #tray,
 #workspaces,
 #cpu,
@@ -99,6 +101,39 @@ window#waybar {
 
 #workspaces button.urgent {
   color: #e67e80; /* $accent_urgent */
+}
+
+#custom-slack,
+#custom-thunderbird {
+  font-weight: bold;
+  min-width: 22px;
+}
+
+#custom-slack.open,
+#custom-thunderbird.open {
+  color: #a7c080;
+}
+
+#custom-slack.unread,
+#custom-thunderbird.unread {
+  color: #dbbc7f;
+}
+
+#custom-slack.closed,
+#custom-thunderbird.closed {
+  color: #76807a;
+}
+
+#custom-slack.urgent,
+#custom-thunderbird.urgent {
+  color: #181f1c;
+  background-image: linear-gradient(to bottom, #e67e80 100%);
+}
+
+#custom-slack.unread,
+#custom-thunderbird.unread {
+  color: #181f1c;
+  background-image: linear-gradient(to bottom, #dbbc7f 100%);
 }
 
 #battery {

@@ -196,9 +196,14 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOPRIVATE="gitlab.com/voltbras/*"
 
 # Podman & Testcontainers compatibility
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+export DOCKER_SOCK="$XDG_RUNTIME_DIR/podman/podman.sock"
+export DOCKER_HOST="unix://$DOCKER_SOCK"
 export TESTCONTAINERS_RYUK_DISABLED=true
 
 export SWAYSOCK=$(ls /run/user/$(id -u)/sway-ipc.*.sock | head -n 1)
 
 source <(k3d completion zsh)
+
+export XDG_CURRENT_DESKTOP=sway
+
+export MOZ_ENABLE_WAYLAND=1
