@@ -31,13 +31,45 @@ This is the easier one, just call `make install-zshrc`, and it will go to your z
 
 ## LightDM
 
-If you use `lightdm-gtk-greeter`, this repo now includes an Everforest dark profile.
+This machine uses **slick-greeter** (`90-slick-greeter.conf`). The repo ships
+`lightdm/etc/lightdm/slick-greeter.conf` (Everforest colors + wallpaper) and an
+optional **gtk-greeter** profile if you switch greeters.
 
-Install it with:
+Install greeter config and a system-readable copy of the login wallpaper:
 
 ``` shell
 sudo make install-lightdm
 ```
+
+## Sway / Google Meet screen sharing (Firefox)
+
+On Sway, Firefox needs **xdg-desktop-portal-wlr**, portal preferences, and
+Wayland/PipeWire capture prefs. `make install-sway` installs portal config via
+`install-portal` (includes `MOZ_ENABLE_WAYLAND=1` for the graphical session).
+
+For the **Firefox snap**, install the WebRTC prefs into your default profile:
+
+``` shell
+make install-firefox
+```
+
+Restart Firefox completely, then in Meet use **Share screen** (not the static
+screenshot option). Slurp is configured for **monitors only** (`-o`): click
+the **monitor outline**, not an app window inside it, or Firefox often shares a
+single frozen frame.
+
+If screencast still freezes after one frame, rebuild **xdg-desktop-portal-wlr**
+from current git (0.9.x includes PipeWire buffer fixes for Firefox/WebRTC):
+
+``` shell
+git clone https://github.com/emersion/xdg-desktop-portal-wlr.git
+cd xdg-desktop-portal-wlr && meson setup build && ninja -C build
+sudo ninja -C build install
+systemctl --user restart xdg-desktop-portal-wlr.service xdg-desktop-portal.service
+```
+
+Reload Sway (`$mod+Shift+c`) or log out and back in after changing portal config.
+In `about:support`, **Window Protocol** should read `wayland`.
 
 ## Rassumfrassum
 

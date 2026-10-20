@@ -53,7 +53,9 @@ exec_always ~/.config/eww/scripts/start.sh
 # System Includes & Environment Setup
 include @sysconfdir@/sway/config.d/*
 include ~/.config/sway/config.d/*
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE MOZ_ENABLE_WAYLAND=1 XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE MOZ_ENABLE_WAYLAND XDG_CURRENT_DESKTOP
+exec systemctl --user restart xdg-desktop-portal-wlr.service xdg-desktop-portal-gtk.service xdg-desktop-portal.service
 bindsym $mod+Shift+e exec swaynag -t warning -m "Are you sure you want to exit sway?" -B "Yes, EXIT!" "swaymsg exit" --font="Maple Mono Bold 12"
 bindsym $mod+Shift+b exec killall -SIGUSR1 waybar
 exec wl-paste --type text --watch cliphist store

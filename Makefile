@@ -41,7 +41,7 @@ install-nemo: ensure-config
 	stow --target ${CONFIG_FOLDER} nemo
 
 .PHONY: install-sway
-install-sway: ensure-config
+install-sway: ensure-config install-portal
 	stow --target ${CONFIG_FOLDER} sway
 
 .PHONY: install-waybar
@@ -59,6 +59,16 @@ install-eww: ensure-config
 .PHONY: install-lightdm
 install-lightdm:
 	stow --target ${ROOT_FOLDER} lightdm
+	sudo install -Dm644 wallpapers/wallpapers/forest2.jpg /usr/share/backgrounds/dotfiles-forest2.jpg
+
+.PHONY: install-portal
+install-portal: ensure-config
+	stow --target ~ portal
+
+.PHONY: install-firefox
+install-firefox:
+	chmod +x firefox/install-user-js.sh
+	firefox/install-user-js.sh
 
 .PHONY: install-wallpaper
 install-wallpaper: ensure-local

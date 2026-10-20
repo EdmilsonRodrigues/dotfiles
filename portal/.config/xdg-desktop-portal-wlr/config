@@ -1,0 +1,5 @@
+[screencast]
+max_fps=30
+# Monitor-only picker: window/region picks often freeze after one frame in Firefox.
+chooser_type=simple
+chooser_cmd=/usr/local/bin/slurp -o -f 'Monitor: %o'

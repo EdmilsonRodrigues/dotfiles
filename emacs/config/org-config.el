@@ -32,6 +32,16 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+;; --- Agenda ---
+(setq org-agenda-files '("~/org"))
+(setq org-enforce-todo-dependencies t)
+
+(require 'org-habit)
+(add-to-list 'org-modules 'org-habit)
+
+(setq org-habit-show-habits-only-for-today t)
+(setq org-habit-graph-column 50)
+
 ;; --- Key bindings for org ---
 (use-package org
   :bind (:map org-mode-map
@@ -43,7 +53,7 @@
          ("C-c C-<up>" . org-move-item-up)
          ("C-c C-<down>" . org-move-item-down)))
 
-(setq org-plantuml-jar-path (expand-file-name "~/bin/.java/plantuml-gplv2-1.2026.3.jar"))
+(setq org-plantuml-jar-path (expand-file-name "~/bin/.java/plantuml-gplv2-1.2026.8.jar"))
 (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
 
 (provide 'org-config)
