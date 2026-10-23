@@ -39,6 +39,7 @@
 (require 'lsp-config)
 (require 'org-config)
 (require 'web-config)
+(require 'connectivity-config)
 
 ;; melpa stuff
 (custom-set-variables

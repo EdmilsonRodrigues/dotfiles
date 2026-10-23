@@ -11,7 +11,7 @@
     "hyprland/workspaces",
     "sway/workspaces",
     "custom/slack",
-    "custom/thunderbird"
+    "custom/mail"
   ],
   "modules-center": [
     "custom/applauncher"
@@ -42,12 +42,12 @@
     "on-click": "swaymsg '[app_id=\"com.slack.Slack\"] focus' || flatpak run com.slack.Slack",
     "tooltip": true
   },
-  "custom/thunderbird": {
+  "custom/mail": {
     "format": "{}",
     "return-type": "json",
-    "interval": 5,
-    "exec": "${HOME}/.config/waybar/scripts/thunderbird-status.sh ''",
-    "on-click": "swaymsg '[app_id=\"thunderbird_thunderbird\"] focus' || thunderbird",
+    "interval": 30,
+    "exec": "${HOME}/.config/waybar/scripts/mail-status.sh ''",
+    "on-click": "swaymsg '[class=\"Emacs\"] focus' || zsh -lic \"emacs -eval '(mu4e)'\"",
     "tooltip": true
   },
   "custom/applauncher": {

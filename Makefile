@@ -58,8 +58,11 @@ install-eww: ensure-config
 
 .PHONY: install-lightdm
 install-lightdm:
-	stow --target ${ROOT_FOLDER} lightdm
+	sudo install -Dm644 lightdm/etc/tmpfiles.d/dotfiles-lightdm-greeter.conf /etc/tmpfiles.d/dotfiles-lightdm-greeter.conf
+	sudo systemd-tmpfiles --create /etc/tmpfiles.d/dotfiles-lightdm-greeter.conf
+	sudo install -Dm644 lightdm/etc/lightdm/slick-greeter.conf /etc/lightdm/slick-greeter.conf
 	sudo install -Dm644 wallpapers/wallpapers/forest2.jpg /usr/share/backgrounds/dotfiles-forest2.jpg
+	sudo install -Dm644 lightdm/etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 
 .PHONY: install-portal
 install-portal: ensure-config

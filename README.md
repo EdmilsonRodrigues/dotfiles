@@ -35,11 +35,15 @@ This machine uses **slick-greeter** (`90-slick-greeter.conf`). The repo ships
 `lightdm/etc/lightdm/slick-greeter.conf` (Everforest colors + wallpaper) and an
 optional **gtk-greeter** profile if you switch greeters.
 
-Install greeter config and a system-readable copy of the login wallpaper:
+Install greeter config, **lightdm** writable state dirs (slick-greeter dconf/cache),
+and a system-readable copy of the login wallpaper:
 
 ``` shell
 sudo make install-lightdm
 ```
+
+If the greeter stays plain black after that, log out once so slick-greeter picks up
+the new `/etc/lightdm/slick-greeter.conf` and `/var/lib/lightdm` layout.
 
 ## Sway / Google Meet screen sharing (Firefox)
 

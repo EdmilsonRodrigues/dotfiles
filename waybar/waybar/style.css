@@ -18,7 +18,7 @@ window#waybar {
 #clock,
 #custom-applauncher,
 #custom-slack,
-#custom-thunderbird,
+#custom-mail,
 #tray,
 #workspaces,
 #cpu,
@@ -104,34 +104,34 @@ window#waybar {
 }
 
 #custom-slack,
-#custom-thunderbird {
+#custom-mail {
   font-weight: bold;
   min-width: 22px;
 }
 
 #custom-slack.open,
-#custom-thunderbird.open {
+#custom-mail.open {
   color: #a7c080;
 }
 
 #custom-slack.unread,
-#custom-thunderbird.unread {
+#custom-mail.unread {
   color: #dbbc7f;
 }
 
 #custom-slack.closed,
-#custom-thunderbird.closed {
+#custom-mail.closed {
   color: #76807a;
 }
 
 #custom-slack.urgent,
-#custom-thunderbird.urgent {
+#custom-mail.urgent {
   color: #181f1c;
   background-image: linear-gradient(to bottom, #e67e80 100%);
 }
 
 #custom-slack.unread,
-#custom-thunderbird.unread {
+#custom-mail.unread {
   color: #181f1c;
   background-image: linear-gradient(to bottom, #dbbc7f 100%);
 }
