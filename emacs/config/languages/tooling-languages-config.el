@@ -48,4 +48,60 @@
 
 (use-package logview)
 
+(defconst my/zeal-executable "/snap/bin/zeal"
+  "Zeal binary from the snap package (see `snap install zeal').")
+
+(defun my/zeal-executable ()
+  "Return a usable Zeal executable, preferring the snap install."
+  (or (and (file-executable-p my/zeal-executable) my/zeal-executable)
+      (executable-find "zeal")))
+
+(defun my/zeal--version (zeal)
+  (when-let* ((output (with-temp-buffer
+                        (call-process zeal nil t nil "--version")
+                        (buffer-string))))
+    (when (string-match "Zeal \\([[:digit:]\\.]+\\)" output)
+      (match-string 1 output))))
+
+(defun my/zeal-at-point-run-search (search)
+  (if-let ((zeal (my/zeal-executable)))
+      (start-process "Zeal" nil zeal search)
+    (user-error "Zeal not found (expected `%s' or `zeal' on PATH)"
+                my/zeal-executable)))
+
+(use-package zeal-at-point
+  :ensure t
+  :init
+  (add-to-list 'exec-path "/snap/bin" t)
+  :bind
+  (("C-c d" . zeal-at-point)
+   ("C-c D" . zeal-at-point-set-docset))
+  :config
+  (advice-add #'zeal-at-point-run-search :override #'my/zeal-at-point-run-search)
+  (when-let* ((zeal (my/zeal-executable)))
+    (setq zeal-at-point-zeal-version (my/zeal--version zeal)))
+  (dolist (entry '((go-ts-mode . "go")
+                   (python-ts-mode . "python3")
+                   (js-ts-mode . "javascript")
+                   (js-jsx-mode . "javascript")
+                   (typescript-mode . "typescript")
+                   (typescript-ts-mode . "typescript")
+                   (ts-mode . "typescript")
+                   (tsx-ts-mode . "typescript")
+                   (rust-ts-mode . "rust")
+                   (perl-ts-mode . "perl")
+                   (php-ts-mode . "php")
+                   (c-ts-mode . "c")
+                   (c++-ts-mode . "cpp")
+                   (bash-ts-mode . "bash")
+                   (sh-ts-mode . "bash")
+                   (haskell-ts-mode . "haskell")
+                   (yaml-ts-mode . "yaml")
+                   (terraform-mode . "terraform")
+                   (terraform-ts-mode . "terraform")
+                   (graphql-mode . "graphql")
+                   (solidity-mode . "solidity")
+                   (crystal-mode . "crystal")))
+    (add-to-list 'zeal-at-point-mode-alist entry)))
+
 (provide 'tooling-languages-config)

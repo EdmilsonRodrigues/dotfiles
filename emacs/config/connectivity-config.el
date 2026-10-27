@@ -1,6 +1,17 @@
 ;; -*- lexical-binding: t -*-
 
 ;; -----------------------------------------------------------------------------
+;; EPUB reader (keep first: later packages must not block .epub mode setup)
+;; -----------------------------------------------------------------------------
+(use-package nov
+  :ensure t
+  :demand t
+  :init
+  ;; Built-in `auto-mode-alist' maps .epub to `doc-view-mode-maybe' first; nov
+  ;; must be at the front of the alist to win.
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+
+;; -----------------------------------------------------------------------------
 ;; Matrix Client
 ;; -----------------------------------------------------------------------------
 (use-package ement
@@ -76,6 +87,7 @@
 ;; RSS Client
 ;; -----------------------------------------------------------------------------
 (use-package elfeed
+  :straight (:host github :repo "skeeto/elfeed" :type git)
   :bind (("C-x w 4" . elfeed))
   :config
   (setq elfeed-feeds
@@ -107,11 +119,5 @@
         '(("Libera Chat"
            :nick "edmilson"
            :channels ("#podman" "#emacs")))))
-
-;; -----------------------------------------------------------------------------
-;; EPUB reader
-;; -----------------------------------------------------------------------------
-(use-package nov
-  :mode ("\\.epub\\'" . nov-mode))
 
 (provide 'connectivity-config)

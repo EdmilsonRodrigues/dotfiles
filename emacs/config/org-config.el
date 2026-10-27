@@ -16,11 +16,14 @@
 (use-package org-project-capture
   :bind (("C-c n p" . org-project-capture-project-todo-completing-read))
   :config
-  (progn
-    (setq org-project-capture-backend
-          (make-instance 'org-project-capture-projectile-backend))  ; Replace with your backend of choice
-    (setq org-project-capture-projects-file "~/org/projects.org")
-    (org-project-capture-single-file)))
+  (setq org-project-capture-projects-file "~/org/projects.org")
+  (org-project-capture-single-file))
+
+(use-package org-projectile
+  :ensure t
+  :after (org-project-capture projectile)
+  :config
+  (setq org-project-capture-backend org-projectile-backend))
 
 ;; (use-package org-roam
 ;;   :ensure t)

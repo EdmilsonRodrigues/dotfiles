@@ -31,7 +31,9 @@
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles partial-completion))))
+  ;; `partial-completion' alone breaks Consult async file lists (e.g.
+  ;; `projectile-find-file'); keep orderless for filtering.
+  (completion-category-overrides '((file (styles orderless partial-completion basic))))
   (completion-category-defaults nil)
   (completion-pcm-leading-wildcard t))
 
@@ -73,12 +75,6 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
-
-(use-package origami
-  :hook (prog-mode . origami-mode)
-  :bind (:map origami-mode-map
-              ("<backtab>" . origami-toggle-node)
-              ("C-<iso-lefttab>" . origami-toggle-all-nodes)))
 
 (use-package yasnippet
   :init (yas-global-mode 1))
