@@ -121,6 +121,7 @@
 
 ;; --- Eshell Configuration & Popup ---
 (use-package eshell
+  :ensure nil
   :straight nil ;; Built into Emacs
   :bind (("C-'" . my-toggle-eshell))
   :config

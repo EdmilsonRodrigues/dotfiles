@@ -1,10 +1,14 @@
 ;; -*- lexical-binding: t -*-
 
+;; -----------------------------------------------------------------------------
 ;; Matrix Client
+;; -----------------------------------------------------------------------------
 (use-package ement
   :bind (("C-x w 1" . ement-connect)))
 
-;; Email Client
+;; -----------------------------------------------------------------------------
+;; Email Client (mu4e with Multi-Account Contexts)
+;; -----------------------------------------------------------------------------
 (let ((brew-mu4e-path "/home/linuxbrew/.linuxbrew/share/emacs/site-lisp/mu/mu4e"))
   (when (file-directory-p brew-mu4e-path)
     (add-to-list 'load-path brew-mu4e-path)))
@@ -12,22 +16,65 @@
 (use-package mu4e
   :ensure nil
   :straight nil
-  :bind (("C-x w 5" . mu4e)))
+  :bind (("C-x w 5" . mu4e))
+  :config
+  (setq mu4e-maildir "~/Mail"
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-update-interval 300
+        mu4e-context-policy 'pick-first
+        mu4e-compose-context-policy 'ask)
 
-(setq mu4e-maildir "~/Mail"
-      mu4e-get-mail-command "mbsync gmail-edmilson-profissional"
-      mu4e-update-interval 300)
+  (setq send-mail-function 'message-send-mail-with-sendmail
+        message-send-mail-function 'message-send-mail-with-sendmail
+        sendmail-program (executable-find "msmtp")
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from"))
 
-(setq mu4e-drafts-folder "/gmail-edmilson-profissional/[Gmail]/Drafts"
-      mu4e-sent-folder   "/gmail-edmilson-profissional/[Gmail]/Sent Mail"
-      mu4e-trash-folder  "/gmail-edmilson-profissional/[Gmail]/Trash"
-      mu4e-refile-folder "/gmail-edmilson-profissional/Archive")
+  (setq mu4e-contexts
+        (list
+         (make-mu4e-context
+          :name "Pessoal"
+          :match-func (lambda (msg) (when msg (string-prefix-p "/gmail-edmilson-pessoal" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address  . "edmilson.rodriguesn38@gmail.com")
+                  (user-full-name     . "Edmilson Rodrigues")
+                  (mu4e-drafts-folder . "/gmail-edmilson-pessoal/[Gmail]/Drafts")
+                  (mu4e-sent-folder   . "/gmail-edmilson-pessoal/[Gmail]/Sent Mail")
+                  (mu4e-trash-folder  . "/gmail-edmilson-pessoal/[Gmail]/Trash")
+                  (mu4e-refile-folder . "/gmail-edmilson-pessoal/Archive")))
 
-(setq send-mail-function 'sendmail-send-it
-      sendmail-program (executable-find "msmtp"))
+         (make-mu4e-context
+          :name "Profissional"
+          :match-func (lambda (msg) (when msg (string-prefix-p "/gmail-edmilson-profissional" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address  . "edmilson.monteiro.rodrigues@gmail.com")
+                  (user-full-name     . "Edmilson Rodrigues")
+                  (mu4e-drafts-folder . "/gmail-edmilson-profissional/[Gmail]/Drafts")
+                  (mu4e-sent-folder   . "/gmail-edmilson-profissional/[Gmail]/Sent Mail")
+                  (mu4e-trash-folder  . "/gmail-edmilson-profissional/[Gmail]/Trash")
+                  (mu4e-refile-folder . "/gmail-edmilson-profissional/Archive")))
 
+         (make-mu4e-context
+          :name "Voltbras"
+          :match-func (lambda (msg) (when msg (string-prefix-p "/gmail-edmilson-voltbras" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address  . "edmilson.rodrigues@voltbras.com.br") ; Adjust if address differs
+                  (user-full-name     . "Edmilson Rodrigues")
+                  (mu4e-drafts-folder . "/gmail-edmilson-voltbras/[Gmail]/Drafts")
+                  (mu4e-sent-folder   . "/gmail-edmilson-voltbras/[Gmail]/Sent Mail")
+                  (mu4e-trash-folder  . "/gmail-edmilson-voltbras/[Gmail]/Trash")
+                  (mu4e-refile-folder . "/gmail-edmilson-voltbras/Archive")))
+
+         (make-mu4e-context
+          :name "PlanetaE"
+          :match-func (lambda (msg) (when msg (string-prefix-p "/gmail-planetae" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address  . "planetaedevelopment@gmail.com")
+                  (user-full-name     . "Edmilson Rodrigues")
+                  (mu4e-drafts-folder . "/gmail-planetae/[Gmail]/Drafts")
+                  (mu4e-sent-folder   . "/gmail-planetae/[Gmail]/Sent Mail")
+                  (mu4e-trash-folder  . "/gmail-planetae/[Gmail]/Trash")
+                  (mu4e-refile-folder . "/gmail-planetae/Archive"))))))
+
+;; -----------------------------------------------------------------------------
 ;; RSS Client
-
+;; -----------------------------------------------------------------------------
 (use-package elfeed
   :bind (("C-x w 4" . elfeed))
   :config
@@ -48,10 +95,23 @@
           ("https://blog.python.org/feeds/posts/default?alt=rss" python)
           ("https://go.dev/blog/feed.atom" go)
           ("https://nodejs.org/en/feed.xml" nodejs javascript)
-          ("https://news.ycombinator.com/rss" tech news)
           ("https://kubernetes.io/feed.xml" kubernetes devops))))
 
-;; IRC
-(use-package circe)
+;; -----------------------------------------------------------------------------
+;; IRC Client (Circe)
+;; -----------------------------------------------------------------------------
+(use-package circe
+  :bind (("C-x w 6" . circe))
+  :config
+  (setq circe-network-options
+        '(("Libera Chat"
+           :nick "edmilson"
+           :channels ("#podman" "#emacs")))))
+
+;; -----------------------------------------------------------------------------
+;; EPUB reader
+;; -----------------------------------------------------------------------------
+(use-package nov
+  :mode ("\\.epub\\'" . nov-mode))
 
 (provide 'connectivity-config)

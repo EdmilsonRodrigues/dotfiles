@@ -26,6 +26,7 @@
   :mode "\\.ini\\'")
 
 (use-package conf-mode
+  :ensure nil
   :straight nil
   :mode ("\\.conf\\'" "\\.cfg\\'" "\\..*ignore\\'" "\\.env[\\..*]?\\'" "\\.lock\\'"))
 

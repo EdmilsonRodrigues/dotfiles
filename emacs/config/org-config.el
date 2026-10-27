@@ -44,6 +44,8 @@
 
 ;; --- Key bindings for org ---
 (use-package org
+  :ensure nil
+  :straight nil
   :bind (:map org-mode-map
          ("C-c <left>" . org-do-promote)
          ("C-c <right>" . org-do-demote)

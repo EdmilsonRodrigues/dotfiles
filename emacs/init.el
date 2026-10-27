@@ -19,7 +19,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(setq straight-use-package-by-default t)
+;; straight is the fallback installer (see packages-config.el).
+(setq straight-use-package-by-default nil)
 
 ;; Load my configuration path
 (add-to-list 'load-path "~/.emacs.d/config/")

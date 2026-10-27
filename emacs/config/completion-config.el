@@ -14,9 +14,12 @@
      `(vertico-current ((t (:background ,bg-hover :foreground ,accent-green :weight bold)))))))
 
 (use-package savehist
+  :ensure nil
+  :straight nil
   :init (savehist-mode))
 
 (use-package vertico-directory
+  :ensure nil
   :straight nil
   :after vertico
   :bind (:map vertico-map
@@ -47,6 +50,8 @@
   (autoload 'consult-project-buffer "consult"))
 
 (use-package emacs
+  :ensure nil
+  :straight nil
   :bind ("C-º" . execute-extended-command)
   :custom
   (context-menu-mode t)
