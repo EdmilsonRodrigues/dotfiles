@@ -74,8 +74,8 @@
   :init
   (add-to-list 'exec-path "/snap/bin" t)
   :bind
-  (("C-c d" . zeal-at-point)
-   ("C-c D" . zeal-at-point-set-docset))
+  (("C-c z z" . zeal-at-point)
+   ("C-c z s" . zeal-at-point-set-docset))
   :config
   (advice-add #'zeal-at-point-run-search :override #'my/zeal-at-point-run-search)
   (when-let* ((zeal (my/zeal-executable)))

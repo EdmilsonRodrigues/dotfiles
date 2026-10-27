@@ -43,7 +43,9 @@
   :ensure t
   :init
   ;; Must be set before `projectile-mode-map' is built (see `projectile-keymap-prefix').
-  (setq projectile-keymap-prefix "C-c p"
+  ;; No `C-c p' prefix map: its command map binds uppercase `C' (Shift/Caps+c) and
+  ;; breaks typing capital C while the transient map is active.  Use `:bind' chords.
+  (setq projectile-keymap-prefix nil
         projectile-completion-system 'default
         projectile-project-search-path '("~/Documents/Projects/")
         projectile-sort-order 'recentf
@@ -73,11 +75,7 @@
   ("C-c p b" . projectile-switch-to-buffer)
   :config
   (projectile-mode 1)
-  (projectile-discover-projects-in-search-path)
-  ;; Match your previous project.el ergonomics inside `C-c p …`.
-  (define-key projectile-command-map (kbd "f") #'projectile-find-file)
-  (define-key projectile-command-map (kbd "g") #'projectile-ripgrep)
-  (define-key projectile-command-map (kbd "e") #'projectile-run-eshell))
+  (projectile-discover-projects-in-search-path))
 
 ;; Built-in project.el still backs eglot, magit, and consult-project-buffer.
 (use-package project
